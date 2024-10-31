@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}
+    {% translate "Checklists" %}
+{% endblock %}
+
+{% block content %}
+    <div class="page-header">
+        <h1>{% translate "Checklists" %}</h1>
+        {% if perms.ephios_material_checklists.add_checklist %}
+            <a class="btn btn-primary btn-sm text-nowrap" href="{% url "simpleresource:resource_add" %}"><span
+                class="fa fa-plus"></span> <span>{% translate "Add checklist" %}</span></a>
+            <a class="btn btn-secondary btn-sm text-nowrap" href="{% url "simpleresource:resource_categories" %}"><span
+                class="fa fa-edit"></span> <span>{% translate "Edit material types" %}</span></a>
+        {% endif %}
+    </div>
+
+    {% block checklists_content %}
+    {% endblock %}
+{% endblock %}
