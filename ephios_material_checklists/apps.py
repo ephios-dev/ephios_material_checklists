@@ -6,8 +6,8 @@ class PluginApp(PluginConfig):
 
     class EphiosPluginMeta:
         name = "ephios_material_checklists"
-        author = "Julian Baumann <julian@ephios.de>"
-        description = "Manage material and create checklists to keep track of it"
+        author = "Christian Schäffer <dev@cschaeffer.de>"
+        description = "Create and manage checklists to keep track of consumable material"
 
     def ready(self):
         from . import signals  # NOQA
