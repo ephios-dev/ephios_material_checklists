@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-10-31 22:34+0100\n"
+"POT-Creation-Date: 2024-11-06 18:15+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,6 +17,43 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ephios_material_checklists/models/itemtype.py:6
+#: ephios_material_checklists/models/itemtype.py:19
+msgid "name"
+msgstr "Bezeichnung"
+
+#: ephios_material_checklists/models/itemtype.py:7
+msgid "ordering index"
+msgstr "Sortierschlüssel"
+
+#: ephios_material_checklists/models/itemtype.py:10
+msgid "item type category"
+msgstr "Materialtyp-Kategorie"
+
+#: ephios_material_checklists/models/itemtype.py:11
+msgid "item type categories"
+msgstr "Materialtyp-Kategorien"
+
+#: ephios_material_checklists/models/itemtype.py:22
+msgid "category"
+msgstr "Kategorie"
+
+#: ephios_material_checklists/models/itemtype.py:23
+msgid "notes"
+msgstr "Bemerkungen"
+
+#: ephios_material_checklists/models/itemtype.py:24
+msgid "deprecated"
+msgstr "Ausgesondert"
+
+#: ephios_material_checklists/models/itemtype.py:34
+msgid "item type"
+msgstr "Materialtyp"
+
+#: ephios_material_checklists/models/itemtype.py:35
+msgid "item types"
+msgstr "Materialtypen"
 
 #: ephios_material_checklists/signals.py:18
 #: ephios_material_checklists/templates/ephios_material_checklists/base.html:5
