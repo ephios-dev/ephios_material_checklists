@@ -102,7 +102,9 @@ class ItemTypeTestCase(TestCase):
 
     def test_item_type_requires_category_attribute(self):
         with self.assertRaises(Exception):
-            item = ItemType.objects.create(name="xxx")
+            item = ItemType.objects.create(
+                name="xxx", has_expiry_date=True, deprecated=False
+            )
             item.full_clean()
             self.fail(
                 "It should not be possible to create an item type without a category."
@@ -185,4 +187,88 @@ class ItemTypeTestCase(TestCase):
             "category",
             str(item),
             "Category name should NOT be in item type string representation.",
+        )
+
+    # Attribute 'image'
+
+    def test_item_type_can_be_created_without_image(self):
+        try:
+            item = ItemType.objects.create(
+                name="name",
+                category=self.category,
+                has_expiry_date=True,
+                deprecated=False,
+            )
+            item.full_clean()
+        except Exception:
+            self.fail(
+                "It should be possible to create an item type without 'image' attribute."
+            )
+
+    def test_item_type_image_is_empty_to_name_by_default(self):
+        item = ItemType.objects.create(
+            name="name",
+            category=self.category,
+            has_expiry_date=True,
+            deprecated=False,
+        )
+        self.assertFalse(
+            item.image, "New item type should not have an image by default."
+        )
+
+    def test_item_type_image_can_be_added(self):
+        try:
+            item = ItemType.objects.create(
+                name="name",
+                category=self.category,
+                has_expiry_date=True,
+                deprecated=False,
+            )
+            item.image = SimpleUploadedFile(
+                "example_image.png",
+                content=open(
+                    "ephios_material_checklists/tests/files/example_image.png", "rb"
+                ).read(),
+                content_type="image/png",
+            )
+            item.save()
+        except Exception:
+            self.fail("It should be possible to add an image attribute for an item.")
+        self.assertTrue(item.image, "After upload, item type should have an image.")
+
+    def test_item_type_image_name(self):
+        item = ItemType.objects.create(
+            id=99,
+            name="name",
+            category=self.category,
+            has_expiry_date=True,
+            deprecated=False,
+        )
+        item.image = SimpleUploadedFile(
+            "example_image.png",
+            content=open(
+                "ephios_material_checklists/tests/files/example_image.png", "rb"
+            ).read(),
+            content_type="image/png",
+        )
+        item.save()
+        self.assertNotIn(
+            "example_image",
+            item.image.name,
+            "Item type image name / path on server should not contain original upload filename anymore.",
+        )
+        self.assertIn(
+            "item" + str(item.pk),
+            item.image.name,
+            'Item type image name / path on server should contain item type\'s id with prefix "item".',
+        )
+        self.assertNotIn(
+            str(self.category.pk),
+            item.image.name,
+            "Item type image name / path on server should not contain the category's id.",
+        )
+        self.assertIn(
+            "item_type/",
+            item.image.name,
+            'Item type image name / path on server should contain a folder "item_type/".',
         )
