@@ -1,8 +1,8 @@
 [tool.poetry]
 name = "ephios-material-checklists"
 version = "0.1.0"
-description = "Manage material and create checklists to keep track of it"
-authors = ["Julian Baumann <julian@ephios.de>"]
+description = "Create and manage checklists to keep track of consumable material."
+authors = ["Christian Schäffer <dev@cschaeffer.de>"]
 license = "MIT"
 
 [tool.poetry.dependencies]
