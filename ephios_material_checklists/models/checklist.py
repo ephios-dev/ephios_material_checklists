@@ -120,8 +120,8 @@ class Checklist(models.Model):
         entries = [e for e in self.get_all_entries()]
         entries.sort(key=lambda x: x.amount)
         entries.sort(key=lambda x: x.item_type.name)
-        entries.sort(key=lambda x: x.item_type.group.name)
-        entries.sort(key=lambda x: x.item_type.group.order_key)
+        entries.sort(key=lambda x: x.item_type.category.name)
+        entries.sort(key=lambda x: x.item_type.category.order_key)
         return entries
 
     def get_merged_entries(self):
@@ -201,6 +201,7 @@ class ChecklistCompartment(models.Model):
         super().__init__(*args, **kwargs)
 
     def save(self, *args, **kwargs):
+        # Ensure existence of ONE parent object
         if self.parent_compartment and self.parent_checklist:
             raise ValidationError(
                 "A compartment cannot be at top level of a checklist "
@@ -210,13 +211,11 @@ class ChecklistCompartment(models.Model):
             raise ValidationError(
                 "A compartment must be at top level of a checklist OR inside another compartment."
             )
+
+        # Loop prevention 1: Ensure parent compartment is not self or having checklist
         if self.parent_compartment:
             if self.parent_compartment == self:
                 raise ValidationError("A compartment cannot be inside itself.")
-            if self.parent_compartment in self.get_all_compartments():
-                raise ValidationError(
-                    "A compartment cannot be inside it's own sub compartment."
-                )
             if (
                 type(self.parent_compartment)
                 is ChecklistCompartmentWithExternalChecklist
@@ -224,6 +223,15 @@ class ChecklistCompartment(models.Model):
                 raise ValidationError(
                     "A compartment cannot be inside a compartment that has its own checklist."
                 )
+
+        # Loop prevention 2: Ensure parent compartment is part of own sub-compartments
+        # (Skip this step if instance is newly created, since it cannot have sub-compartments by then already)
+        if self.id is not None:
+            if self.parent_compartment in self.get_all_compartments():
+                raise ValidationError(
+                    "A compartment cannot be inside it's own sub compartment."
+                )
+
         return super().save(*args, **kwargs)
 
     def get_sub_compartments(self):
@@ -248,14 +256,14 @@ class ChecklistCompartment(models.Model):
         return hasattr(self, "checklistcompartmentwithexternalchecklist")
 
     def get_local_entries(self):
-        return self.contents.all().prefetch_related("item_type", "item_type__group")
+        return self.contents.all().prefetch_related("item_type", "item_type__category")
 
     def get_ordered_local_entries(self):
         return (
             self.get_local_entries()
             .order_by(
-                "item_type__group__order_key",
-                "item_type__group__name",
+                "item_type__category__order_key",
+                "item_type__category__name",
                 "item_type__name",
             )
             .distinct()
@@ -280,7 +288,7 @@ class ChecklistCompartment(models.Model):
                 checklistentry__compartment=self
             ) | ItemType.objects.filter(deprecated=False)
             self.available_itemtypes_queryset = merged_queryset.order_by(
-                "group__order_key", "group__name", "name"
+                "category__order_key", "categoryp__name", "name"
             ).distinct()
         return self.available_itemtypes_queryset
 
@@ -296,7 +304,7 @@ class ChecklistCompartment(models.Model):
                 compartment=self,
                 amount=other_entry.amount,
                 optional=other_entry.optional,
-                text=other_entry.text,
+                notes=other_entry.notes,
             )
 
         # Copy sub-compartments
@@ -401,7 +409,7 @@ class ChecklistCompartmentWithExternalChecklist(ChecklistCompartment):
 
     def __str__(self):
         return _("{compartment} (contents according to checklist {checklist})").format(
-            description=super().__str__(),
+            compartment=super().__str__(),
             checklist=self.external_checklist.name,
         )
 
