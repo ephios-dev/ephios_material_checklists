@@ -1,0 +1,61 @@
+{% extends "ephios_material_checklists/base.html" %}
+{% load i18n %}
+
+
+{% block checklists_header_content %}
+    {% if perms.ephios_material_checklists.add_checklist %}
+        <div class="d-block pb-3">
+            <a class="btn btn-primary btn-sm m-1 ms-0 text-nowrap" href="{% url "simpleresource:resource_add" %}"><span
+                class="fa fa-plus"></span> <span>{% translate "Add checklist" %}</span></a>
+            <div class="float-end">
+                <a class="btn btn-secondary btn-sm m-1 ms-0 text-nowrap" href="{% url "simpleresource:resource_categories" %}"><span
+                    class="fa fa-edit"></span> <span>{% translate "Edit material types" %}</span></a>
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}
+
+{% block checklists_content %}
+
+    <ul class="list-group mb-3">
+        {% for checklist in checklist_list %}
+                <li class="list-group-item p-0 flex-fill flex-row">
+                    <div class="row m-1 p-2">
+                        <div class="col-12 col-lg-6">
+                            <h5 class="mb-0 text-break {% if checklist.deprecated %}text-decoration-line-through{% endif %}">
+                                {{ checklist.name }}
+                            </h5>
+                            <span class="w-100 text-body-secondary text-break {% if checklist.deprecated %}text-decoration-line-through{% endif %}">
+                                {{ checklist.name }}
+                            </span>
+                        </div>
+                        <div class="col-6 col-lg-3">
+                            {% if checklist.deprecated %}
+                                <span class="badge bg-danger">{% translate "Deprecated" %}</span>
+                            {% endif %}
+                            {% if checklist.abstract %}
+                                <span class="badge bg-primary">{% translate "Only Sub-Checklist" %}</span>
+                            {% endif %}
+                        </div>
+                        <div class="col-6 col-lg-3 text-end">
+                            <a class="btn btn-secondary btn-sm text-nowrap">
+                                <span class="fa fa-eye"></span>
+                                <span class="d-none d-md-inline">{% translate "Details" %}</span>
+                            </a>
+                            <a class="btn btn-secondary btn-sm text-nowrap">
+                                <span class="fa fa-edit"></span>
+                                <span class="d-none d-md-inline">{% translate "Bearbeiten" %}</span>
+                            </a>
+                        </div>
+                    </div>
+                </li>
+        {% empty %}
+            <div class="mb-3">
+                <h5 class="mt-5 text-center">
+                    {% translate "No results" %}
+                </h5>
+            </div>
+        {% endfor %}
+    </ul>
+
+{% endblock %}

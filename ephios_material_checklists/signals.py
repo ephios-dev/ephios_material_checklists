@@ -16,7 +16,7 @@ def add_nav_link(sender, request, **kwargs):
         [
             {
                 "label": _("Checklists"),
-                "url": reverse_lazy("ephios_material_checklists:start"),
+                "url": reverse_lazy("ephios_material_checklists:checklist_list"),
                 "active": request.resolver_match
                 and request.resolver_match.app_name == "ephios_material_checklists",
                 "group": _("Management"),

@@ -4,7 +4,6 @@ from ephios.extra.mixins import CustomPermissionRequiredMixin
 from ephios.plugins.simpleresource.models import Resource
 
 
-# Create your views here.
 class ChecklistsStartView(CustomPermissionRequiredMixin, TemplateView):
     permission_required = "ephios_material_checklists.add_checklist"
     template_name = "ephios_material_checklists/start.html"
