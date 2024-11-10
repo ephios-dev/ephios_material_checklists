@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-11-07 01:13+0100\n"
+"POT-Creation-Date: 2024-11-10 16:05+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -71,41 +71,41 @@ msgstr "übergeordnetes Fach"
 msgid "parent checklist"
 msgstr "übergeordnete Checkliste"
 
-#: ephios_material_checklists/models/checklist.py:322
+#: ephios_material_checklists/models/checklist.py:330
 msgid "checklist compartment"
 msgstr "Checklisten-Fach"
 
-#: ephios_material_checklists/models/checklist.py:323
+#: ephios_material_checklists/models/checklist.py:331
 msgid "checklist compartments"
 msgstr "Checklisten-Fächer"
 
-#: ephios_material_checklists/models/checklist.py:345
+#: ephios_material_checklists/models/checklist.py:353
 msgid "referenced checklist"
 msgstr "referenzierte Checkliste"
 
-#: ephios_material_checklists/models/checklist.py:403
+#: ephios_material_checklists/models/checklist.py:411
 #, python-brace-format
 msgid "{compartment} (contents according to checklist {checklist})"
 msgstr "{compartment} (Inhalt gemäß checkliste {checklist})"
 
-#: ephios_material_checklists/models/checklist.py:409
+#: ephios_material_checklists/models/checklist.py:417
 msgid "checklist compartment containing other checklist"
 msgstr "Checklisten-Fach gemäß anderer Checkliste"
 
-#: ephios_material_checklists/models/checklist.py:410
+#: ephios_material_checklists/models/checklist.py:418
 msgid "checklist compartments containing other checklists"
 msgstr "Checklisten-Facher gemäß anderen Checklisten"
 
-#: ephios_material_checklists/models/checklist.py:427
+#: ephios_material_checklists/models/checklist.py:435
 #: ephios_material_checklists/models/itemtype.py:44
 msgid "notes"
 msgstr "Bemerkungen"
 
-#: ephios_material_checklists/models/checklist.py:466
+#: ephios_material_checklists/models/checklist.py:474
 msgid "checklist entry"
 msgstr "Checklisten-Eintrag"
 
-#: ephios_material_checklists/models/checklist.py:467
+#: ephios_material_checklists/models/checklist.py:475
 msgid "checklist entries"
 msgstr "Checklisten-Einträge"
 
@@ -153,10 +153,76 @@ msgstr ""
 "Erlaubt das erstellen, bearbeiten und löschen von Checklisten für "
 "Verbrauchsmaterial."
 
-#: ephios_material_checklists/templates/ephios_material_checklists/base.html:13
+#: ephios_material_checklists/templates/ephios_material_checklists/checklist_detail.html:10
+msgid "Statistics"
+msgstr "Statistiken"
+
+#: ephios_material_checklists/templates/ephios_material_checklists/checklist_detail.html:13
+msgid "Last edited"
+msgstr "Zuletzt bearbeitet"
+
+#: ephios_material_checklists/templates/ephios_material_checklists/checklist_detail.html:14
+msgid "Contents"
+msgstr "Inhalt"
+
+#: ephios_material_checklists/templates/ephios_material_checklists/checklist_detail.html:15
+msgid "Items"
+msgstr "Gegenstände"
+
+#: ephios_material_checklists/templates/ephios_material_checklists/checklist_detail.html:16
+msgid "Types"
+msgstr "verschiedene Typen"
+
+#: ephios_material_checklists/templates/ephios_material_checklists/checklist_detail.html:17
+msgid "Used for"
+msgstr "Genutzt für"
+
+#: ephios_material_checklists/templates/ephios_material_checklists/checklist_detail.html:18
+msgid "Resources"
+msgstr "Ressourcen"
+
+#: ephios_material_checklists/templates/ephios_material_checklists/checklist_detail.html:24
+msgid "Document"
+msgstr "Dokument"
+
+#: ephios_material_checklists/templates/ephios_material_checklists/checklist_detail.html:28
+#, fuzzy
+#| msgid "Download PDF"
+msgid "Download as PDF Document"
+msgstr "PDF Herunterladen"
+
+#: ephios_material_checklists/templates/ephios_material_checklists/checklist_detail.html:30
+msgid "PDF-File"
+msgstr "PDF-Datei"
+
+#: ephios_material_checklists/templates/ephios_material_checklists/checklist_list.html:9
 msgid "Add checklist"
 msgstr "Checkliste hinzufügen"
 
-#: ephios_material_checklists/templates/ephios_material_checklists/base.html:15
+#: ephios_material_checklists/templates/ephios_material_checklists/checklist_list.html:12
 msgid "Edit material types"
 msgstr "Materialtypen bearbeiten"
+
+#: ephios_material_checklists/templates/ephios_material_checklists/checklist_list.html:38
+msgid "Details"
+msgstr "Details"
+
+#: ephios_material_checklists/templates/ephios_material_checklists/checklist_list.html:42
+msgid "Bearbeiten"
+msgstr "Bearbeiten"
+
+#: ephios_material_checklists/templates/ephios_material_checklists/checklist_list.html:50
+msgid "No results"
+msgstr "Keine Ergebnisse"
+
+#: ephios_material_checklists/templates/ephios_material_checklists/fragments/checklist_header.html:7
+msgid "Back to Overview"
+msgstr "Zurück zur Übersicht"
+
+#: ephios_material_checklists/templates/ephios_material_checklists/fragments/checklist_tags.html:4
+msgid "Deprecated"
+msgstr "Ausgesondert"
+
+#: ephios_material_checklists/templates/ephios_material_checklists/fragments/checklist_tags.html:7
+msgid "Only Sub-Checklist"
+msgstr "Unter-Checkliste"

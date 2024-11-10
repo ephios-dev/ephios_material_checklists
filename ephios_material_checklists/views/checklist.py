@@ -11,7 +11,7 @@ class ChecklistListView(ListView):
 class ChecklistDetailView(DetailView):
     model = Checklist
     context_object_name = 'this_checklist'
-    template_name = "ephios_material_checklists/checklist/detail.html"
+    template_name = "ephios_material_checklists/checklist_detail.html"
 
 
 class ChecklistDetailContentView(ChecklistDetailView):

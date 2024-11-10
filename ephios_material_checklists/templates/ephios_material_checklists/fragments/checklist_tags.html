@@ -1,0 +1,8 @@
+{% load i18n %}
+
+{% if checklist.deprecated %}
+    <span class="badge bg-danger">{% translate "Deprecated" %}</span>
+{% endif %}
+{% if checklist.abstract %}
+    <span class="badge bg-primary">{% translate "Only Sub-Checklist" %}</span>
+{% endif %}

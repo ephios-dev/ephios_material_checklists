@@ -30,15 +30,10 @@
                             </span>
                         </div>
                         <div class="col-6 col-lg-3">
-                            {% if checklist.deprecated %}
-                                <span class="badge bg-danger">{% translate "Deprecated" %}</span>
-                            {% endif %}
-                            {% if checklist.abstract %}
-                                <span class="badge bg-primary">{% translate "Only Sub-Checklist" %}</span>
-                            {% endif %}
+
                         </div>
                         <div class="col-6 col-lg-3 text-end">
-                            <a class="btn btn-secondary btn-sm text-nowrap">
+                            <a class="btn btn-secondary btn-sm text-nowrap" href="{% url 'ephios_material_checklists:checklist_detail' checklist.pk %}">
                                 <span class="fa fa-eye"></span>
                                 <span class="d-none d-md-inline">{% translate "Details" %}</span>
                             </a>
