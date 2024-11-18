@@ -62,13 +62,13 @@
                     {% endfor %}
                 </div>
             </li>
-        {% empty %}
-            <div class="mb-3">
-                <h5 class="mt-5 text-center">
-                    {% translate "No content yet." %}
-                </h5>
-            </div>
         {% endfor %}
+        <li class="list-group-item p-0 flex-fill flex-row">
+            <div class="d-block p-3 text-center text-body-secondary">
+                <a class="btn btn-primary btn-md m-1 ms-0 text-nowrap" href="{% url "ephios_material_checklists:itemtype_category_add" %}"><span
+                    class="fa fa-plus"></span> <span>{% translate "Create material type category" %}</span></a>
+            </div>
+        </li>
     </ul>
 
 {% endblock %}

@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-11-18 22:24+0100\n"
+"POT-Creation-Date: 2024-11-19 00:11+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -228,6 +228,35 @@ msgstr "Ausgesondert"
 msgid "Only Sub-Checklist"
 msgstr "Unter-Checkliste"
 
+#: ephios_material_checklists/templates/ephios_material_checklists/itemtypecategory_form.html:9
+msgid "Edit material type category"
+msgstr "Materialkategorie bearbeiten"
+
+#: ephios_material_checklists/templates/ephios_material_checklists/itemtypecategory_form.html:11
+#: ephios_material_checklists/templates/ephios_material_checklists/itemtypecategory_list.html:69
+msgid "Create material type category"
+msgstr "Materialkategorie erstellen"
+
+#: ephios_material_checklists/templates/ephios_material_checklists/itemtypecategory_form.html:21
+msgid "Save"
+msgstr "Speichern"
+
+#: ephios_material_checklists/templates/ephios_material_checklists/itemtypecategory_form.html:26
+msgid "Reset changes"
+msgstr "Änderungen zurücksetzen"
+
+#: ephios_material_checklists/templates/ephios_material_checklists/itemtypecategory_form.html:30
+msgid "Aboard editing"
+msgstr "Bearbeitung abbrechen"
+
+#: ephios_material_checklists/templates/ephios_material_checklists/itemtypecategory_form.html:36
+msgid "Clear form"
+msgstr "Formular zurücksetzen"
+
+#: ephios_material_checklists/templates/ephios_material_checklists/itemtypecategory_form.html:40
+msgid "Aboard creation"
+msgstr "Erstellung abbrechen"
+
 #: ephios_material_checklists/templates/ephios_material_checklists/itemtypecategory_list.html:31
 msgid "Edit Category"
 msgstr "Kategorie Bearbeiten"
@@ -236,6 +265,7 @@ msgstr "Kategorie Bearbeiten"
 msgid "Edit Category Contents"
 msgstr "Materialtypen bearbeiten"
 
-#: ephios_material_checklists/templates/ephios_material_checklists/itemtypecategory_list.html:52
+#: ephios_material_checklists/templates/ephios_material_checklists/itemtypecategory_list.html:60
 msgid "No content yet."
 msgstr "Noch kein Inhalt."
+
