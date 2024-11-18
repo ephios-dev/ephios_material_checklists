@@ -43,7 +43,9 @@ class ItemType(models.Model):
     has_expiry_date = models.BooleanField(default=True, verbose_name="has expiry date")
     notes = models.TextField(blank=True, verbose_name=_("notes"))
     deprecated = models.BooleanField(default=False, verbose_name=_("deprecated"))
-    image = ThumbnailerImageField(upload_to=item_type_image_path, blank=True)
+    image = ThumbnailerImageField(
+        upload_to=item_type_image_path, blank=True, verbose_name=_("image")
+    )
 
     # TODO: Add additional name field with extra HTML formating
 

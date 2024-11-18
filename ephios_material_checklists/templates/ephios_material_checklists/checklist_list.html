@@ -8,7 +8,7 @@
             <a class="btn btn-primary btn-sm m-1 ms-0 text-nowrap" href="{% url "simpleresource:resource_add" %}"><span
                 class="fa fa-plus"></span> <span>{% translate "Add checklist" %}</span></a>
             <div class="float-end">
-                <a class="btn btn-secondary btn-sm m-1 ms-0 text-nowrap" href="{% url "simpleresource:resource_categories" %}"><span
+                <a class="btn btn-secondary btn-sm m-1 ms-0 text-nowrap" href="{% url "ephios_material_checklists:itemtype_list" %}"><span
                     class="fa fa-edit"></span> <span>{% translate "Edit material types" %}</span></a>
             </div>
         </div>
@@ -16,8 +16,7 @@
 {% endblock %}
 
 {% block checklists_content %}
-
-    <ul class="list-group mb-3">
+    <ul class="list-group my-3">
         {% for checklist in checklist_list %}
                 <li class="list-group-item p-0 flex-fill flex-row">
                     <div class="row m-1 p-2">

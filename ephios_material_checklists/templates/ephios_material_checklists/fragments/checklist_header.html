@@ -2,11 +2,11 @@
 
 <h2>
     <span style="{% if checklist.deprecated %}text-decoration-line-through{% endif %}">{{ checklist.name }}</span>
+    {% include 'ephios_material_checklists/fragments/checklist_tags.html' with checklist=checklist %}
     <div class="float-end">
         <a class="btn btn-secondary btn-sm m-1 ms-0 text-nowrap" href="{% url "ephios_material_checklists:checklist_list" %}"><span
-            class="fa fa-arrow-left"></span> <span>{% translate "Back to Overview" %}</span></a>
+            class="fa fa-arrow-left"></span> <span>{% translate "Back to Checklist Overview" %}</span></a>
     </div>
-    {% include 'ephios_material_checklists/fragments/checklist_tags.html' with checklist=checklist %}
 </h2>
 
 <div class="my-4">

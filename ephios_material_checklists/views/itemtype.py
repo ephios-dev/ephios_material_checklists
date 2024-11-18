@@ -3,15 +3,16 @@ from django.views.generic import ListView, TemplateView
 from ephios.extra.mixins import CustomPermissionRequiredMixin
 from ephios.plugins.simpleresource.models import Resource
 
+from ephios_material_checklists.models import ItemType
 
-class ChecklistsStartView(CustomPermissionRequiredMixin, TemplateView):
-    permission_required = "ephios_material_checklists.add_checklist"
+
+class ChecklistsStartView(TemplateView):
     template_name = "ephios_material_checklists/start.html"
 
-# class ChecklistsStartView(CustomPermissionRequiredMixin, ListView):
-#     permission_required = "simpleresource.view_resourcecategory"
-#     model = Resource
-#     ordering = ("category__name", "title")
-#
-#     def get_queryset(self):
-#         return super().get_queryset().select_related("category")
+class ItemtypeListView(ListView):
+    model = ItemType
+    ordering = ("category__order_key", "category__name", "name")
+    template_name = "ephios_material_checklists/itemtype/itemtype_list.html"
+
+    def get_queryset(self):
+        return super().get_queryset().select_related("category")
