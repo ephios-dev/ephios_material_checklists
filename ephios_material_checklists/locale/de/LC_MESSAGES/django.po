@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2024-11-10 16:05+0100\n"
+"POT-Creation-Date: 2024-11-18 22:24+0100\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -52,6 +52,7 @@ msgstr "PDF-Datei"
 
 #: ephios_material_checklists/models/checklist.py:49
 #: ephios_material_checklists/models/checklist.py:196
+#: ephios_material_checklists/models/itemtype.py:47
 msgid "image"
 msgstr "Bild"
 
@@ -125,11 +126,11 @@ msgstr "Materialtyp-Kategorien"
 msgid "category"
 msgstr "Kategorie"
 
-#: ephios_material_checklists/models/itemtype.py:56
+#: ephios_material_checklists/models/itemtype.py:58
 msgid "item type"
 msgstr "Materialtyp"
 
-#: ephios_material_checklists/models/itemtype.py:57
+#: ephios_material_checklists/models/itemtype.py:59
 msgid "item types"
 msgstr "Materialtypen"
 
@@ -186,8 +187,6 @@ msgid "Document"
 msgstr "Dokument"
 
 #: ephios_material_checklists/templates/ephios_material_checklists/checklist_detail.html:28
-#, fuzzy
-#| msgid "Download PDF"
 msgid "Download as PDF Document"
 msgstr "PDF Herunterladen"
 
@@ -200,24 +199,26 @@ msgid "Add checklist"
 msgstr "Checkliste hinzufügen"
 
 #: ephios_material_checklists/templates/ephios_material_checklists/checklist_list.html:12
+#: ephios_material_checklists/templates/ephios_material_checklists/itemtypecategory_list.html:8
 msgid "Edit material types"
 msgstr "Materialtypen bearbeiten"
 
-#: ephios_material_checklists/templates/ephios_material_checklists/checklist_list.html:38
+#: ephios_material_checklists/templates/ephios_material_checklists/checklist_list.html:37
 msgid "Details"
 msgstr "Details"
 
-#: ephios_material_checklists/templates/ephios_material_checklists/checklist_list.html:42
+#: ephios_material_checklists/templates/ephios_material_checklists/checklist_list.html:41
 msgid "Bearbeiten"
 msgstr "Bearbeiten"
 
-#: ephios_material_checklists/templates/ephios_material_checklists/checklist_list.html:50
+#: ephios_material_checklists/templates/ephios_material_checklists/checklist_list.html:49
 msgid "No results"
 msgstr "Keine Ergebnisse"
 
-#: ephios_material_checklists/templates/ephios_material_checklists/fragments/checklist_header.html:7
-msgid "Back to Overview"
-msgstr "Zurück zur Übersicht"
+#: ephios_material_checklists/templates/ephios_material_checklists/fragments/checklist_header.html:8
+#: ephios_material_checklists/templates/ephios_material_checklists/itemtypecategory_list.html:11
+msgid "Back to Checklist Overview"
+msgstr "Zurück zur Checklisten-Übersicht"
 
 #: ephios_material_checklists/templates/ephios_material_checklists/fragments/checklist_tags.html:4
 msgid "Deprecated"
@@ -226,3 +227,15 @@ msgstr "Ausgesondert"
 #: ephios_material_checklists/templates/ephios_material_checklists/fragments/checklist_tags.html:7
 msgid "Only Sub-Checklist"
 msgstr "Unter-Checkliste"
+
+#: ephios_material_checklists/templates/ephios_material_checklists/itemtypecategory_list.html:31
+msgid "Edit Category"
+msgstr "Kategorie Bearbeiten"
+
+#: ephios_material_checklists/templates/ephios_material_checklists/itemtypecategory_list.html:33
+msgid "Edit Category Contents"
+msgstr "Materialtypen bearbeiten"
+
+#: ephios_material_checklists/templates/ephios_material_checklists/itemtypecategory_list.html:52
+msgid "No content yet."
+msgstr "Noch kein Inhalt."
