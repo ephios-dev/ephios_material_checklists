@@ -15,60 +15,64 @@
 
 {% block checklists_content %}
 
-    <ul class="list-group my-3">
-        {% for category in itemtypecategory_list %}
-            <li class="list-group-item p-0 flex-fill flex-row">
-                <div class="row m-1 p-2">
-                    <div class="col-12 justify-content-between">
-                        <h4 class="mb-0 d-inline-flex break-word">
-                            {{ category.name }}
-                        </h4>
-                        <span class="align-text-top badge rounded-pill bg-secondary ml-4">
-                            {{ category.items.all|length }}
-                        </span>
-                        <div class="float-end">
-                            <a class="btn btn-primary btn-sm m-1 ms-0 text-nowrap" href="{% url "ephios_material_checklists:itemtype_category_edit" category.pk %}">
-                                <span class="fa fa-edit"></span> <span>{% translate "Edit Category" %}</span></a>
-                            <a class="btn btn-primary btn-sm m-1 ms-0 text-nowrap" href="">
-                                <span class="fa fa-list"></span> <span>{% translate "Edit Category Contents" %}</span></a>
-                        </div>
-                    </div>
-                </div>
-                <div class="row m-1 p-2 mb-3">
-                    {% for itemtype_chunk in category.items.all|chunks:4 %}
-                        {% if not forloop.counter|divisibleby:2 %}
-                            <div class="col-12 col-md-6 col-lg-6 p-0 m-0">
-                                <div class="row">
-                                    <div class="col-12 col-lg-6">
-                        {% else %}
-                                    <div class="col-12 col-lg-6">
-                        {% endif %}
-                            <ul>
-                                {% for itemtype in itemtype_chunk %}
-                                    <li class="text-body-secondary">{{ itemtype.name }}</li>
-                                {% endfor %}
-                            </ul>
-                        {% if not forloop.counter|divisibleby:2 %}
-                                    </div>
-                        {% else %}
-                                    </div>
+    <div class="card mb-2">
+        <div class="card-body pt-2">
+            <ul class="list-group list-group-flush" data-formset-body>
+                {% for category in itemtypecategory_list %}
+                    <li class="list-group-item flex-fill flex-row">
+                        <div class="row m-1 p-2">
+                            <div class="col-12 justify-content-between">
+                                <h4 class="mb-0 d-inline-flex break-word">
+                                    {{ category.name }}
+                                </h4>
+                                <span class="align-text-top badge rounded-pill bg-secondary ml-4">
+                                    {{ category.items.all|length }}
+                                </span>
+                                <div class="float-end">
+                                    <a class="btn btn-primary btn-sm m-1 ms-0 text-nowrap" href="{% url "ephios_material_checklists:itemtype_category_edit" category.pk %}">
+                                        <span class="fa fa-edit"></span> <span>{% translate "Edit Category" %}</span></a>
+                                    <a class="btn btn-primary btn-sm m-1 ms-0 text-nowrap" href="{% url "ephios_material_checklists:itemtype_edit" category.pk %}">
+                                        <span class="fa fa-list"></span> <span>{% translate "Edit Category Contents" %}</span></a>
                                 </div>
                             </div>
-                        {% endif %}
-                    {% empty %}
-                        <span class="mt-2 text-center text-body-secondary">
-                            {% translate "No content yet." %}
-                        </span>
-                    {% endfor %}
-                </div>
-            </li>
-        {% endfor %}
-        <li class="list-group-item p-0 flex-fill flex-row">
-            <div class="d-block p-3 text-center text-body-secondary">
-                <a class="btn btn-primary btn-md m-1 ms-0 text-nowrap" href="{% url "ephios_material_checklists:itemtype_category_add" %}"><span
-                    class="fa fa-plus"></span> <span>{% translate "Create material type category" %}</span></a>
-            </div>
-        </li>
-    </ul>
+                        </div>
+                        <div class="row m-1 p-2 mb-3">
+                            {% for itemtype_chunk in category.items.all|chunks:4 %}
+                                {% if not forloop.counter|divisibleby:2 %}
+                                    <div class="col-12 col-md-6 col-lg-6 p-0 m-0">
+                                        <div class="row">
+                                            <div class="col-12 col-lg-6">
+                                {% else %}
+                                            <div class="col-12 col-lg-6">
+                                {% endif %}
+                                    <ul>
+                                        {% for itemtype in itemtype_chunk %}
+                                            <li class="text-body-secondary">{{ itemtype.name }}</li>
+                                        {% endfor %}
+                                    </ul>
+                                {% if not forloop.counter|divisibleby:2 %}
+                                            </div>
+                                {% else %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endif %}
+                            {% empty %}
+                                <span class="mt-2 text-center text-body-secondary">
+                                    {% translate "No content yet." %}
+                                </span>
+                            {% endfor %}
+                        </div>
+                    </li>
+                {% endfor %}
+                <li class="list-group-item p-0 flex-fill flex-row">
+                    <div class="d-block p-3 text-center text-body-secondary">
+                        <a class="btn btn-primary btn-md m-1 ms-0 text-nowrap" href="{% url "ephios_material_checklists:itemtype_category_add" %}"><span
+                            class="fa fa-plus"></span> <span>{% translate "Create material type category" %}</span></a>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
 
 {% endblock %}

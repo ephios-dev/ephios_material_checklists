@@ -428,7 +428,7 @@ class ChecklistEntry(models.Model):
         null=False,
         on_delete=models.CASCADE,
         related_name="contents",
-        verbose_name="compartment",
+        verbose_name=_("compartment"),
     )
     amount = models.PositiveIntegerField(validators=[MinValueValidator(1)], verbose_name="required amount")
     optional = models.BooleanField(default=False, verbose_name="optional")

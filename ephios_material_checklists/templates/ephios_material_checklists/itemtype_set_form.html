@@ -1,0 +1,97 @@
+{% extends "ephios_material_checklists/base.html" %}
+{% load ephios_crispy %}
+{% load crispy_forms_filters %}
+{% load i18n %}
+{% load formset_tags %}
+
+
+{% block checklists_header_content %}
+    <h2>
+        {% translate "Edit material types" %}:
+    </h2>
+{% endblock %}
+
+
+{% block checklists_content %}
+    <form method="post">
+        {% csrf_token %}
+
+        {{ form.non_form_errors }}
+
+        <div class="formset" data-formset data-formset-prefix="{{ form.prefix }}">
+            {{ form.management_form }}
+            <div class="card mb-2">
+                <div class="card-body pt-2">
+                    <ul class="list-group list-group-flush" data-formset-body>
+                        {% for itemtype_form in form %}
+                            <li class="list-group-item" data-formset-form>
+                                {{ itemtype_form.id }}
+                                <div class="row align-items-start">
+                                    <div class="col-lg-4 pt-3">
+                                        {% crispy_field itemtype_form.name label_class="form-label" %}
+                                    </div>
+                                    <div class="col-lg-3 pt-3">
+                                        {% crispy_field itemtype_form.notes label_class="form-label" %}
+                                    </div>
+                                    <div class="col-lg-2 pt-3">
+                                        {% crispy_field itemtype_form.has_expiry_date label_class="form-label" %}
+                                    </div>
+                                    <div class="col-lg-2 pt-3">
+                                        {% crispy_field itemtype_form.deprecated %}
+                                    </div>
+                                    <div class="col-lg-1 pt-2">
+                                        {% if not itemtype_form.fields.DELETE.disabled %}
+                                            <button class="btn btn-secondary" type="button"
+                                                    data-formset-delete-button>
+                                                <span class="fas fa-trash-alt"></span> {% translate "Delete" %}</button>
+                                        {% else %}
+                                            <p class="text-body-secondary">
+                                                {% translate "cannot delete, appears in checklist" %}
+                                            </p>
+                                        {% endif %}
+                                    </div>
+                                </div>
+                                <div class="d-none">
+                                    {{ itemtype_form.DELETE }}
+                                </div>
+                            </li>
+                        {% endfor %}
+                    </ul>
+
+                    <input class="btn btn-secondary mt-2" type="button"
+                           value="{% translate "Add category" %}"
+                           data-formset-add>
+                </div>
+            </div>
+
+            {% with itemtype_form=form.empty_form %}
+                <script type="form-template" data-formset-empty-form>
+                    {% escapescript %}
+                        <li class="list-group-item" data-formset-form>
+                        {{ itemtype_form.id }}
+                        <div class="row align-items-start">
+                        <div class="col-lg-6 pt-3">
+                        {% crispy_field itemtype_form.name label_class="col-lg-3" field_class="col-lg-9" wrapper_class="row" %}
+                        </div>
+                        <div class="col-lg-4 pt-3">
+                        {% crispy_field itemtype_form.notes label_class="col-lg-3" field_class="col-lg-9" wrapper_class="row" %}
+                        </div>
+                        <div class="col-lg-1 pt-2">
+                        <button class="btn btn-link" type="button"
+                        data-formset-delete-button><span
+                        class="fas fa-trash-alt"></span> {% translate "Delete" %}</button>
+                        </div>
+                        </div>
+                        <div class="d-none">
+                        {{ itemtype_form.DELETE }}
+                        </div>
+                        </li>
+                    {% endescapescript %}
+                </script>
+            {% endwith %}
+
+
+            <input type="submit" class="btn btn-primary" value="{% translate "Save" %}">
+        </div>
+    </form>
+{% endblock %}
