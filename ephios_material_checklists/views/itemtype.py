@@ -40,15 +40,21 @@ class ItemTypeSetUpdateView(SuccessMessageMixin, FormView):
         self.category = get_object_or_404(ItemTypeCategory, pk=self.kwargs.pop("category_pk"))
         return super().dispatch(request, *args, **kwargs)
 
+    #def get_initial(self):
+    #    return {"category": self.category}
+
     def get_form_kwargs(self):
         return {"category": self.category, **super().get_form_kwargs()}
 
     def get_context_data(self, **kwargs):
         return {"category": self.category, **super().get_context_data(**kwargs)}
 
+    def get_success_url(self):
+        return reverse("ephios_material_checklists:itemtype_edit",  kwargs={"category_pk": self.category.pk})
+
     def form_valid(self, form):
+        # form.category = self.category
         with transaction.atomic():
-            form.category = self.category
             form.save()
         return super().form_valid(form)
 

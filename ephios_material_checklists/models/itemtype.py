@@ -34,6 +34,7 @@ class ItemType(models.Model):
     )
     category = models.ForeignKey(
         ItemTypeCategory,
+        editable=False,
         null=False,
         blank=False,
         on_delete=models.CASCADE,

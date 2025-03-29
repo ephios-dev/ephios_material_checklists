@@ -41,7 +41,7 @@
                                         {% crispy_field itemtype_form.has_expiry_date label_class="form-label" %}
                                     </div>
                                     <div class="col-lg-2 pt-3">
-                                        {% crispy_field itemtype_form.deprecated %}
+                                        {% crispy_field itemtype_form.deprecated label_class="form-label" %}
                                     </div>
                                     <div class="col-lg-1 pt-2">
                                         {% if not itemtype_form.fields.DELETE.disabled %}

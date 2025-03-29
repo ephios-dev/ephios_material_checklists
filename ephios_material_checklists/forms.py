@@ -9,9 +9,9 @@ from ephios_material_checklists.models import ItemType, ItemTypeCategory
 class BaseItemTypeFormset(BaseModelFormSet):
 
     def __init__(self, *args, **kwargs):
-        category = kwargs.pop("category")
+        self.category = kwargs.pop("category")
         super().__init__(*args, **kwargs)
-        self.queryset = ItemType.objects.filter(category=category).order_by("name")
+        self.queryset = ItemType.objects.filter(category=self.category).order_by("name")
 
     def add_fields(self, form, index):
         super().add_fields(form, index)
@@ -24,6 +24,13 @@ class BaseItemTypeFormset(BaseModelFormSet):
                 disabled=itemtype.pk and itemtype.checklistentry_set.exists(),
             )
 
+    # def clean(self):
+    #     super().clean()
+    #
+    #     for form in self.forms:
+    #         form.instance.category = self.category
+    #         print(form.cleaned_data, form.instance.category)
+
 
 ItemTypeFormset = modelformset_factory(
     model=ItemType,
@@ -31,6 +38,6 @@ ItemTypeFormset = modelformset_factory(
     can_delete=True,
     can_order=False,
     extra=0,
-    fields=["name", "category", "notes", "has_expiry_date", "deprecated"],
+    fields=["name", "notes", "has_expiry_date", "deprecated"],
 )
 
