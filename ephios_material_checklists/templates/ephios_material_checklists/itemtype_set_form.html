@@ -63,7 +63,7 @@
                     </ul>
 
                     <input class="btn btn-secondary mt-2" type="button"
-                           value="{% translate "Add material type" %}"
+                           value='{% translate "Add material type" %}'
                            data-formset-add>
                 </div>
             </div>
@@ -85,7 +85,7 @@
                                     {% crispy_field itemtype_form.has_expiry_date label_class="form-label" %}
                                 </div>
                                 <div class="col-lg-2 pt-3">
-                                    {% crispy_field itemtype_form.deprecated %}
+                                    {% crispy_field itemtype_form.deprecated label_class="form-label" %}
                                 </div>
                                 <div class="col-lg-1 pt-2">
                                     <button class="btn btn-secondary" type="button"

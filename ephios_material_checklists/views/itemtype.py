@@ -44,7 +44,8 @@ class ItemTypeSetUpdateView(SuccessMessageMixin, FormView):
     #    return {"category": self.category}
 
     def get_form_kwargs(self):
-        return {"category": self.category, **super().get_form_kwargs()}
+        # return {"category": self.category, **super().get_form_kwargs()}
+        return {"instance": self.category, **super().get_form_kwargs()}
 
     def get_context_data(self, **kwargs):
         return {"category": self.category, **super().get_context_data(**kwargs)}
