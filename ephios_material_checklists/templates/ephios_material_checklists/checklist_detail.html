@@ -7,27 +7,43 @@
 
 {% block checklists_content %}
 
-    <h3>{% translate "Statistics" %}</h3>
+    <div class="card">
 
-    <ul>
-        <li>{% translate "Last edited" %}: <strong>XXXX</strong></li>
-        <li>{% translate "Contents" %}:
-            <strong>{{ this_checklist.get_item_count }} {% translate "Items" %}</strong>
-            ({{ this_checklist.get_merged_entry_count }} {% translate "Types" %})</li>
-        <li>{% translate "Used for" %}:
-            <strong>{{ this_checklist.get_item_count }} {% translate "Resources" %}</strong>
-    </ul>
+        <div class="card-body">
+            <h3 class="card-title mb-0">{% translate "Statistics" %}</h3>
+        </div>
+
+        <ul class="list-group list-group-flush">
+            <li class="list-group-item">{% translate "Last edited" %}: <strong>XXXX</strong></li>
+            <li class="list-group-item">{% translate "Contents" %}:
+                <strong>{{ this_checklist.get_item_count }} {% translate "Items" %}</strong>
+                ({{ this_checklist.get_merged_entry_count }} {% translate "Types" %})</li>
+            <li class="list-group-item">{% translate "Used for" %}:
+                <strong>0 {% translate "Resources" %}</strong></li>
+        </ul>
+
+    </div>
 
 
     {% if this_checklist.file %}
 
-        <h3>{% translate "Document" %}</h3>
+        <div class="card">
 
-        <a class="btn btn-primary btn-block" href="{{ this_checklist.file.url }}">
-            <i class="fa fa-download"></i>
-            {% translate "Download as PDF Document" %}
-        </a>
-        <p class="text-secondary text-left">{% translate "PDF-File" %}; {{ this_checklist.file.size | filesizeformat  }}</p>
+            <div class="card-header">
+                <h3>{% translate "Document" %}</h3>
+            </div>
+
+            <div class="card-body">
+
+                <a class="btn btn-primary btn-block" href="{{ this_checklist.file.url }}">
+                    <i class="fa fa-download"></i>
+                    {% translate "Download as PDF Document" %}
+                </a>
+                <p class="text-secondary text-left">{% translate "PDF-File" %}; {{ this_checklist.file.size | filesizeformat  }}</p>
+
+            </div>
+        </div>
+
     {% endif %}
 
 {% endblock %}

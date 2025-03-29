@@ -1,0 +1,32 @@
+{% extends "ephios_material_checklists/base.html" %}
+{% load i18n %}
+
+{% block checklists_header_content %}
+    {% include 'ephios_material_checklists/fragments/checklist_header.html' with checklist=this_checklist active_tab="content" %}
+{% endblock checklists_header_content %}
+
+{% block checklists_content %}
+
+    <div class="card mb-3">
+        <div class="card-body">
+            <h3 class="card-title mb-0">{% translate "Inhalt" %}</h3>
+        </div>
+        <ul class="list-group list-group-flush">
+            {% regroup this_checklist.get_merged_entries by item_type.category as entires_by_category %}
+            {% for category in entires_by_category %}
+                <li class="list-group-item">
+                    <h5>{{ category.grouper.name }}</h5>
+                    <ul>
+                        {% for entry in category.list %}
+                            <li>
+                                {{ entry.amount |safe }}x {{ entry.item_type.name |safe }}
+                            </li>
+                        {% endfor %}
+                    </ul>
+                    <p></p>
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+{% endblock %}

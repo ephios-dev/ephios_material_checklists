@@ -5,7 +5,7 @@ from ephios_material_checklists.models import Checklist
 
 class ChecklistListView(ListView):
     model = Checklist
-    template_name = "ephios_material_checklists/checklist/checklist_list.html"
+    template_name = "ephios_material_checklists/checklist_list.html"
 
 
 class ChecklistDetailView(DetailView):
@@ -15,7 +15,7 @@ class ChecklistDetailView(DetailView):
 
 
 class ChecklistDetailContentView(ChecklistDetailView):
-    template_name = "ephios_material_checklists/checklist/detail_content.html"
+    template_name = "ephios_material_checklists/checklist_content.html"
 
 
 # class ChecklistDetailHierarchyView(ChecklistHierarchyMixin, ChecklistDetailView):
