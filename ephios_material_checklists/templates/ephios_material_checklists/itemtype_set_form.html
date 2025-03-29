@@ -7,7 +7,7 @@
 
 {% block checklists_header_content %}
     <h2>
-        {% translate "Edit material types" %}:
+        {% translate "Edit material types" %}: {{ category }}
     </h2>
 {% endblock %}
 
@@ -17,6 +17,10 @@
         {% csrf_token %}
 
         {{ form.non_form_errors }}
+
+        {% if form.errors %}
+            {{ form.errors }}
+        {% endif %}
 
         <div class="formset" data-formset data-formset-prefix="{{ form.prefix }}">
             {{ form.management_form }}
@@ -59,39 +63,53 @@
                     </ul>
 
                     <input class="btn btn-secondary mt-2" type="button"
-                           value="{% translate "Add category" %}"
+                           value="{% translate "Add material type" %}"
                            data-formset-add>
                 </div>
             </div>
 
             {% with itemtype_form=form.empty_form %}
                 <script type="form-template" data-formset-empty-form>
+
                     {% escapescript %}
                         <li class="list-group-item" data-formset-form>
-                        {{ itemtype_form.id }}
-                        <div class="row align-items-start">
-                        <div class="col-lg-6 pt-3">
-                        {% crispy_field itemtype_form.name label_class="col-lg-3" field_class="col-lg-9" wrapper_class="row" %}
-                        </div>
-                        <div class="col-lg-4 pt-3">
-                        {% crispy_field itemtype_form.notes label_class="col-lg-3" field_class="col-lg-9" wrapper_class="row" %}
-                        </div>
-                        <div class="col-lg-1 pt-2">
-                        <button class="btn btn-link" type="button"
-                        data-formset-delete-button><span
-                        class="fas fa-trash-alt"></span> {% translate "Delete" %}</button>
-                        </div>
-                        </div>
-                        <div class="d-none">
-                        {{ itemtype_form.DELETE }}
-                        </div>
+                            {{ itemtype_form.id }}
+                            <div class="row align-items-start">
+                                <div class="col-lg-4 pt-3">
+                                    {% crispy_field itemtype_form.name label_class="form-label" %}
+                                </div>
+                                <div class="col-lg-3 pt-3">
+                                    {% crispy_field itemtype_form.notes label_class="form-label" %}
+                                </div>
+                                <div class="col-lg-2 pt-3">
+                                    {% crispy_field itemtype_form.has_expiry_date label_class="form-label" %}
+                                </div>
+                                <div class="col-lg-2 pt-3">
+                                    {% crispy_field itemtype_form.deprecated %}
+                                </div>
+                                <div class="col-lg-1 pt-2">
+                                    <button class="btn btn-secondary" type="button"
+                                                data-formset-delete-button>
+                                        <span class="fas fa-trash-alt"></span> {% translate "Delete" %}</button>
+                                </div>
+                            </div>
+                            <div class="d-none">
+                                {{ itemtype_form.DELETE }}
+                            </div>
                         </li>
                     {% endescapescript %}
                 </script>
             {% endwith %}
 
-
             <input type="submit" class="btn btn-primary" value="{% translate "Save" %}">
+            <a class="btn btn-outline-primary ml-1" href="{% url 'ephios_material_checklists:itemtype_edit' 1 %}" role="button">
+                <span class="fa fa-undo" aria-hidden="true"></span>
+                {% translate "Reset changes" %}
+            </a>
+            <a class="btn btn-outline-primary ml-1" href="{% url 'ephios_material_checklists:itemtype_category_list' %}" role="button">
+                <span class="fa fa-times" aria-hidden="true"></span>
+                {% translate "Aboard editing" %}
+            </a>
         </div>
     </form>
 {% endblock %}

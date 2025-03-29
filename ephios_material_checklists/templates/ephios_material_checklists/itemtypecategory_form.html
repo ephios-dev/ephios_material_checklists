@@ -18,9 +18,9 @@
     <form method="post">
         {% csrf_token %}
         {{ form|crispy }}
-        <input type="submit" class="btn btn-primary" value="{% translate "Save" %}">
 
         {% if itemtypecategory %}
+            <input type="submit" class="btn btn-primary" value="{% translate "Save" %}">
             <a class="btn btn-outline-primary ml-1" href="{% url 'ephios_material_checklists:itemtype_category_edit' itemtypecategory.pk %}" role="button">
                 <span class="fa fa-undo" aria-hidden="true"></span>
                 {% translate "Reset changes" %}
@@ -31,7 +31,8 @@
             </a>
 
         {% else %}
-            <a class="btn btn-outline-primary ml-1" href="{% url 'ephios_material_checklists:itemtype_category_add' %}" role="button">
+            <input type="submit" class="btn btn-primary" value="{% translate "Create" %}">
+            <a class="btn btn-outline-primary ml-1" href="{% url 'ephios_material_checklists:itemtype_edit' category.pk %}" role="button">
                 <span class="fa fa-undo" aria-hidden="true"></span>
                 {% translate "Clear form" %}
             </a>

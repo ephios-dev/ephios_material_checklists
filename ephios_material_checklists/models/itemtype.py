@@ -40,7 +40,7 @@ class ItemType(models.Model):
         related_name="items",
         verbose_name=_("category"),
     )
-    has_expiry_date = models.BooleanField(default=True, verbose_name="has expiry date")
+    has_expiry_date = models.BooleanField(default=True, verbose_name=_("has expiry date"))
     notes = models.TextField(blank=True, verbose_name=_("notes"))
     deprecated = models.BooleanField(default=False, verbose_name=_("deprecated"))
     image = ThumbnailerImageField(

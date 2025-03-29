@@ -1,11 +1,18 @@
-from django.forms import modelformset_factory, BooleanField, BaseModelFormSet
+from django.db.models import ForeignKey
+from django.forms import BooleanField, BaseModelFormSet, inlineformset_factory, modelformset_factory, ModelForm
 from django.forms.formsets import DELETION_FIELD_NAME
 from django.utils.translation import gettext as _
 
-from ephios_material_checklists.models import ItemTypeCategory, ItemType
+from ephios_material_checklists.models import ItemType, ItemTypeCategory
 
 
 class BaseItemTypeFormset(BaseModelFormSet):
+
+    def __init__(self, *args, **kwargs):
+        category = kwargs.pop("category")
+        super().__init__(*args, **kwargs)
+        self.queryset = ItemType.objects.filter(category=category).order_by("name")
+
     def add_fields(self, form, index):
         super().add_fields(form, index)
         initial_form_count = self.initial_form_count()
@@ -19,10 +26,11 @@ class BaseItemTypeFormset(BaseModelFormSet):
 
 
 ItemTypeFormset = modelformset_factory(
-    ItemType,
+    model=ItemType,
     formset=BaseItemTypeFormset,
     can_delete=True,
+    can_order=False,
     extra=0,
-    fields=["name", "notes", "has_expiry_date", "deprecated"],
+    fields=["name", "category", "notes", "has_expiry_date", "deprecated"],
 )
 

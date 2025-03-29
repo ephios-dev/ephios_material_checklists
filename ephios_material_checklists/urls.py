@@ -18,7 +18,7 @@ urlpatterns = [
                         [
                             path("", ItemTypeCategoryListView.as_view(), name="itemtype_category_list"),
                             path("add/", ItemTypeCategoryCreateView.as_view(), name="itemtype_category_add"),
-                            path("<int:pk>/", ItemTypeSetUpdateView.as_view(), name="itemtype_edit"),
+                            path("<int:category_pk>/", ItemTypeSetUpdateView.as_view(), name="itemtype_edit"),
                             path("<int:pk>/edit/", ItemTypeCategoryUpdateView.as_view(), name="itemtype_category_edit"),
                         ],
                         "",

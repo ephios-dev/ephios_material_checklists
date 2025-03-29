@@ -1,6 +1,6 @@
 from django.contrib.messages.views import SuccessMessageMixin
 from django.db import transaction
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.urls import reverse_lazy, reverse
 from django.views.generic import ListView, TemplateView, UpdateView, CreateView, FormView
 from ephios.extra.mixins import CustomPermissionRequiredMixin
@@ -36,13 +36,19 @@ class ItemTypeSetUpdateView(SuccessMessageMixin, FormView):
     form_class = ItemTypeFormset
     template_name = "ephios_material_checklists/itemtype_set_form.html"
 
-    # success_url = reverse_lazy("simpleresource:resource_list")
-    # success_message = _("Resource categories updated successfully.")
+    def dispatch(self, request, *args, **kwargs):
+        self.category = get_object_or_404(ItemTypeCategory, pk=self.kwargs.pop("category_pk"))
+        return super().dispatch(request, *args, **kwargs)
 
     def get_form_kwargs(self):
-        return {"queryset": ItemType.objects.all(), **super().get_form_kwargs()}
+        return {"category": self.category, **super().get_form_kwargs()}
+
+    def get_context_data(self, **kwargs):
+        return {"category": self.category, **super().get_context_data(**kwargs)}
 
     def form_valid(self, form):
         with transaction.atomic():
+            form.category = self.category
             form.save()
         return super().form_valid(form)
+
