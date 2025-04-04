@@ -1,0 +1,28 @@
+{% load i18n %}
+{% load checklists_extras %}
+
+{% for itemtype_chunk in itemtypes|chunks:4 %}
+    {% if not forloop.counter|divisibleby:2 %}
+        <div class="col-12 col-md-6 col-lg-6 p-0 m-0">
+            <div class="row">
+                <div class="col-12 col-lg-6">
+    {% else %}
+                <div class="col-12 col-lg-6">
+    {% endif %}
+        <ul class="mb-0">
+            {% for itemtype in itemtype_chunk %}
+                <li class="{{ font_class }}">{{ itemtype.name }}</li>
+            {% endfor %}
+        </ul>
+    {% if not forloop.counter|divisibleby:2 %}
+                </div>
+    {% else %}
+                </div>
+            </div>
+        </div>
+    {% endif %}
+{% empty %}
+    <span class="mt-2 text-center {{ font_class }}">
+        {% translate "No content yet." %}
+    </span>
+{% endfor %}

@@ -2,9 +2,7 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.db import transaction
 from django.shortcuts import render, get_object_or_404
 from django.urls import reverse_lazy, reverse
-from django.views.generic import ListView, TemplateView, UpdateView, CreateView, FormView
-from ephios.extra.mixins import CustomPermissionRequiredMixin
-from ephios.plugins.simpleresource.models import Resource
+from django.views.generic import ListView, TemplateView, UpdateView, CreateView, FormView, DeleteView
 
 from ephios_material_checklists.forms import ItemTypeFormset
 from ephios_material_checklists.models import ItemType, ItemTypeCategory
@@ -32,12 +30,16 @@ class ItemTypeCategoryUpdateView(UpdateView):
     fields = ("name", "order_key")
     success_url = reverse_lazy("ephios_material_checklists:itemtype_category_list")
 
+class ItemTypeCategoryDeleteView(DeleteView):
+    model = ItemTypeCategory
+    success_url = reverse_lazy("ephios_material_checklists:itemtype_category_list")
+
 class ItemTypeSetUpdateView(SuccessMessageMixin, FormView):
     form_class = ItemTypeFormset
     template_name = "ephios_material_checklists/itemtype_set_form.html"
 
     def dispatch(self, request, *args, **kwargs):
-        self.category = get_object_or_404(ItemTypeCategory, pk=self.kwargs.pop("category_pk"))
+        self.category = get_object_or_404(ItemTypeCategory, pk=self.kwargs.pop("pk"))
         return super().dispatch(request, *args, **kwargs)
 
     #def get_initial(self):
@@ -51,7 +53,7 @@ class ItemTypeSetUpdateView(SuccessMessageMixin, FormView):
         return {"category": self.category, **super().get_context_data(**kwargs)}
 
     def get_success_url(self):
-        return reverse("ephios_material_checklists:itemtype_edit",  kwargs={"category_pk": self.category.pk})
+        return reverse("ephios_material_checklists:itemtype_edit",  kwargs={"pk": self.category.pk})
 
     def form_valid(self, form):
         # form.category = self.category

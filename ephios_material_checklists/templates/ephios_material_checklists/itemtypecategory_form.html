@@ -17,7 +17,13 @@
 {% block checklists_content %}
     <form method="post">
         {% csrf_token %}
-        {{ form|crispy }}
+
+        <div class="card mb-3">
+            <div class="card-body">
+                {{ form|crispy }}
+            </div>
+        </div>
+
 
         {% if itemtypecategory %}
             <input type="submit" class="btn btn-primary" value="{% translate "Save" %}">

@@ -1,6 +1,5 @@
 {% extends "ephios_material_checklists/base.html" %}
 {% load i18n %}
-{% load checklists_extras %}
 
 
 {% block checklists_header_content %}
@@ -29,39 +28,17 @@
                                     {{ category.items.all|length }}
                                 </span>
                                 <div class="float-end">
-                                    <a class="btn btn-primary btn-sm m-1 ms-0 text-nowrap" href="{% url "ephios_material_checklists:itemtype_category_edit" category.pk %}">
-                                        <span class="fa fa-edit"></span> <span>{% translate "Edit Category" %}</span></a>
                                     <a class="btn btn-primary btn-sm m-1 ms-0 text-nowrap" href="{% url "ephios_material_checklists:itemtype_edit" category.pk %}">
                                         <span class="fa fa-list"></span> <span>{% translate "Edit Category Contents" %}</span></a>
+                                    <a class="btn btn-primary btn-sm m-1 ms-0 text-nowrap" href="{% url "ephios_material_checklists:itemtype_category_edit" category.pk %}">
+                                        <span class="fa fa-edit"></span> <span>{% translate "Edit Category" %}</span></a>
+                                    <a class="btn btn-danger btn-sm m-1 ms-0 text-nowrap" href="{% url "ephios_material_checklists:itemtype_category_delete" category.pk %}">
+                                        <span class="fa fa-trash"></span> <span>{% translate "Delete Category" %}</span></a>
                                 </div>
                             </div>
                         </div>
                         <div class="row m-1 p-2 mb-3">
-                            {% for itemtype_chunk in category.items.all|chunks:4 %}
-                                {% if not forloop.counter|divisibleby:2 %}
-                                    <div class="col-12 col-md-6 col-lg-6 p-0 m-0">
-                                        <div class="row">
-                                            <div class="col-12 col-lg-6">
-                                {% else %}
-                                            <div class="col-12 col-lg-6">
-                                {% endif %}
-                                    <ul>
-                                        {% for itemtype in itemtype_chunk %}
-                                            <li class="text-body-secondary">{{ itemtype.name }}</li>
-                                        {% endfor %}
-                                    </ul>
-                                {% if not forloop.counter|divisibleby:2 %}
-                                            </div>
-                                {% else %}
-                                            </div>
-                                        </div>
-                                    </div>
-                                {% endif %}
-                            {% empty %}
-                                <span class="mt-2 text-center text-body-secondary">
-                                    {% translate "No content yet." %}
-                                </span>
-                            {% endfor %}
+                            {% include 'ephios_material_checklists/fragments/itemtype_list_columns.html' with itemtypes=category.items.all font_class="text-body-secondary" %}
                         </div>
                     </li>
                 {% endfor %}

@@ -2,7 +2,7 @@ from django.urls import path, include
 
 from .views import ChecklistListView, ChecklistDetailView, ItemTypeCategoryListView, ItemTypeCategoryUpdateView, \
     ItemTypeCategoryCreateView, ItemTypeSetUpdateView, ChecklistDetailContentView, ChecklistCreateView, \
-    ChecklistUpdateView
+    ChecklistUpdateView, ItemTypeCategoryDeleteView
 
 app_name = "ephios_material_checklists"
 
@@ -30,8 +30,17 @@ urlpatterns = [
                         [
                             path("", ItemTypeCategoryListView.as_view(), name="itemtype_category_list"),
                             path("add/", ItemTypeCategoryCreateView.as_view(), name="itemtype_category_add"),
-                            path("<int:category_pk>/", ItemTypeSetUpdateView.as_view(), name="itemtype_edit"),
-                            path("<int:pk>/edit/", ItemTypeCategoryUpdateView.as_view(), name="itemtype_category_edit"),
+                            path(
+                                "<int:pk>/",
+                                include(
+                                    [
+                                        path("", ItemTypeSetUpdateView.as_view(), name="itemtype_edit"),
+                                        path("edit/", ItemTypeCategoryUpdateView.as_view(), name="itemtype_category_edit"),
+                                        path("delete/", ItemTypeCategoryDeleteView.as_view(), name="itemtype_category_delete"),
+                                    ],
+                                    "",
+                                ),
+                            ),
                         ],
                         "",
                     ),
