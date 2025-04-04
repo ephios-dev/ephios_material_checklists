@@ -5,7 +5,7 @@
 {% block checklists_header_content %}
     {% if perms.ephios_material_checklists.add_checklist %}
         <div class="d-block pb-3">
-            <a class="btn btn-primary btn-sm m-1 ms-0 text-nowrap" href="{% url "simpleresource:resource_add" %}"><span
+            <a class="btn btn-primary btn-sm m-1 ms-0 text-nowrap" href="{% url "ephios_material_checklists:checklist_add" %}"><span
                 class="fa fa-plus"></span> <span>{% translate "Add checklist" %}</span></a>
             <div class="float-end">
                 <a class="btn btn-secondary btn-sm m-1 ms-0 text-nowrap" href="{% url "ephios_material_checklists:itemtype_category_list" %}"><span

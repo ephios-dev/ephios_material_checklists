@@ -1,0 +1,47 @@
+{% extends "ephios_material_checklists/base.html" %}
+{% load crispy_forms_filters %}
+{% load i18n %}
+
+
+{% block checklists_header_content %}
+    <h2>
+        {% if itemtypecategory %}
+            {% translate "Edit checklist" %}
+        {% else %}
+            {% translate "Create checklist" %}
+        {% endif %}
+    </h2>
+{% endblock %}
+
+
+{% block checklists_content %}
+    <form method="post">
+        {% csrf_token %}
+        {{ form|crispy }}
+
+        {% if checklist %}
+            <input type="submit" class="btn btn-primary" value="{% translate "Save" %}">
+            <a class="btn btn-outline-primary ml-1" href="{% url 'ephios_material_checklists:checklist_edit' itemtypecategory.pk %}" role="button">
+                <span class="fa fa-undo" aria-hidden="true"></span>
+                {% translate "Reset changes" %}
+            </a>
+            <a class="btn btn-outline-primary ml-1" href="{% url 'ephios_material_checklists:checklist_list' %}" role="button">
+                <span class="fa fa-times" aria-hidden="true"></span>
+                {% translate "Aboard editing" %}
+            </a>
+
+        {% else %}
+            <input type="submit" class="btn btn-primary" value="{% translate "Create" %}">
+            <a class="btn btn-outline-primary ml-1" href="{% url 'ephios_material_checklists:checklist_add' %}" role="button">
+                <span class="fa fa-undo" aria-hidden="true"></span>
+                {% translate "Clear form" %}
+            </a>
+            <a class="btn btn-outline-primary ml-1" href="{% url 'ephios_material_checklists:checklist_list' %}" role="button">
+                <span class="fa fa-times" aria-hidden="true"></span>
+                {% translate "Aboard creation" %}
+            </a>
+
+        {% endif %}
+
+    </form>
+{% endblock %}
