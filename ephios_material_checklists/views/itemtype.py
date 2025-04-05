@@ -22,7 +22,7 @@ class ItemTypeCategoryListView(ListView):
 class ItemTypeCategoryCreateView(SuccessMessageMixin, CreateView):
     model = ItemTypeCategory
     fields = ("name", "order_key")
-    success_message = _("Category %(name)s was created successfully. You can now specify the material types.")
+    success_message = _("Category %(name)s was created successfully. You can now specify the item types.")
 
     def get_success_url(self):
         return reverse("ephios_material_checklists:itemtype_edit",  kwargs={"pk": self.object.pk})
@@ -31,12 +31,12 @@ class ItemTypeCategoryUpdateView(SuccessMessageMixin, UpdateView):
     model = ItemTypeCategory
     fields = ("name", "order_key")
     success_url = reverse_lazy("ephios_material_checklists:itemtype_category_list")
-    success_message = _("Material type category %(name)s was update successfully.")
+    success_message = _("Item type category %(name)s was update successfully.")
 
 class ItemTypeCategoryDeleteView(SuccessMessageMixin, DeleteView):
     model = ItemTypeCategory
     success_url = reverse_lazy("ephios_material_checklists:itemtype_category_list")
-    success_message = _("Category %(name)s and it's material types were deleted successfully.")
+    success_message = _("Category %(name)s and it's item types were deleted successfully.")
 
     def get_success_message(self, cleaned_data):
         return self.success_message % dict(name=self.object.name, )
@@ -44,7 +44,7 @@ class ItemTypeCategoryDeleteView(SuccessMessageMixin, DeleteView):
 class ItemTypeSetUpdateView(SuccessMessageMixin, FormView):
     form_class = ItemTypeFormset
     template_name = "ephios_material_checklists/itemtype_set_form.html"
-    success_message = _("Material types were updated successfully.")
+    success_message = _("Item types were updated successfully.")
 
     def dispatch(self, request, *args, **kwargs):
         self.category = get_object_or_404(ItemTypeCategory, pk=self.kwargs.pop("pk"))

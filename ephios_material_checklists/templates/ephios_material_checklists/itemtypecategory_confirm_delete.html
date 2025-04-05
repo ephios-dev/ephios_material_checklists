@@ -5,7 +5,7 @@
 
 {% block checklists_header_content %}
     <h2>
-        {% translate "Delete material type category" %}
+        {% translate "Delete item type category" %}
     </h2>
 {% endblock %}
 
@@ -18,23 +18,23 @@
         <div class="alert alert-danger pb-1 mb-4 mt-4">
             <h4 class="text-danger bold mb-4">
                 {% blocktranslate trimmed %}
-                    Are you sure you want to delete the material type category {{ itemtypecategory }}?
+                    Are you sure you want to delete the item type category {{ itemtypecategory }}?
                 {% endblocktranslate %}
             </h4>
 
             {% if itemtypecategory.items.all %}
                 <p class="text-danger">
-                    {% translate "The following material types from this category will be deleted as well:" %}
+                    {% translate "The following item types from this category will be deleted as well:" %}
                 </p>
                 <div class="row m-1 p-2">
                     {% include 'ephios_material_checklists/fragments/itemtype_list_columns.html' with itemtypes=itemtypecategory.items.all font_class="text-danger" %}
                 </div>
                 <p class="text-danger">
-                    {% translate "Caution: All checklist entries containing these material type will be deleted as well." %}
+                    {% translate "Caution: All checklist entries containing these item types will also be deleted." %}
                 </p>
             {% else %}
                 <p class="text-danger">
-                    {% translate "There are no material types in this category yet." %}
+                    {% translate "There are no item types in this category yet." %}
                 </p>
             {% endif %}
         </div>

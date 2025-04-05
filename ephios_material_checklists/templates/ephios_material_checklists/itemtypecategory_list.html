@@ -4,7 +4,7 @@
 
 {% block checklists_header_content %}
     <h2>
-        {% translate "Edit material types" %}
+        {% translate "Edit item types" %}
         <div class="float-end">
             <a class="btn btn-secondary btn-sm m-1 ms-0 text-nowrap" href="{% url "ephios_material_checklists:checklist_list" %}"><span
                 class="fa fa-arrow-left"></span> <span>{% translate "Back to Checklist Overview" %}</span></a>
@@ -45,7 +45,7 @@
                 <li class="list-group-item p-0 flex-fill flex-row">
                     <div class="d-block p-3 text-center text-body-secondary">
                         <a class="btn btn-primary btn-md m-1 ms-0 text-nowrap" href="{% url "ephios_material_checklists:itemtype_category_add" %}"><span
-                            class="fa fa-plus"></span> <span>{% translate "Create material type category" %}</span></a>
+                            class="fa fa-plus"></span> <span>{% translate "Create item type category" %}</span></a>
                     </div>
                 </li>
             </ul>

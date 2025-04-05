@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2025-03-29 22:01+0100\n"
+"POT-Creation-Date: 2025-04-06 00:38+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -29,8 +29,10 @@ msgstr ""
 "Verbrauchsmaterial zu behalten."
 
 #: ephios_material_checklists/forms.py:23
+#: ephios_material_checklists/templates/ephios_material_checklists/checklist_confirm_delete.html:37
 #: ephios_material_checklists/templates/ephios_material_checklists/itemtype_set_form.html:50
 #: ephios_material_checklists/templates/ephios_material_checklists/itemtype_set_form.html:93
+#: ephios_material_checklists/templates/ephios_material_checklists/itemtypecategory_confirm_delete.html:46
 msgid "Delete"
 msgstr "Löschen"
 
@@ -166,45 +168,115 @@ msgstr ""
 "Erlaubt das erstellen, bearbeiten und löschen von Checklisten für "
 "Verbrauchsmaterial."
 
-#: ephios_material_checklists/templates/ephios_material_checklists/checklist_detail.html:10
+#: ephios_material_checklists/templates/ephios_material_checklists/checklist_confirm_delete.html:8
+#: ephios_material_checklists/templates/ephios_material_checklists/itemtypecategory_confirm_delete.html:8
+msgid "Delete item type category"
+msgstr "Materialkategorie löschen"
+
+#: ephios_material_checklists/templates/ephios_material_checklists/checklist_confirm_delete.html:20
+#, python-format
+msgid "Are you sure you want to delete the checklist %(checklist)s?"
+msgstr ""
+
+#: ephios_material_checklists/templates/ephios_material_checklists/checklist_confirm_delete.html:26
+msgid ""
+"Caution: All material checks based on the checklist will be deleted as well."
+msgstr ""
+
+#: ephios_material_checklists/templates/ephios_material_checklists/checklist_confirm_delete.html:29
+msgid "Did you consider marking the checklist as deprecated instead?"
+msgstr ""
+
+#: ephios_material_checklists/templates/ephios_material_checklists/checklist_confirm_delete.html:35
+#: ephios_material_checklists/templates/ephios_material_checklists/itemtypecategory_confirm_delete.html:44
+msgid "Aboard delete"
+msgstr "Löschen abbrechen"
+
+#: ephios_material_checklists/templates/ephios_material_checklists/checklist_content.html:12
+msgid "Content"
+msgstr "Inhalt"
+
+#: ephios_material_checklists/templates/ephios_material_checklists/checklist_detail.html:13
 msgid "Statistics"
 msgstr "Statistiken"
 
-#: ephios_material_checklists/templates/ephios_material_checklists/checklist_detail.html:13
+#: ephios_material_checklists/templates/ephios_material_checklists/checklist_detail.html:17
 msgid "Last edited"
 msgstr "Zuletzt bearbeitet"
 
-#: ephios_material_checklists/templates/ephios_material_checklists/checklist_detail.html:14
+#: ephios_material_checklists/templates/ephios_material_checklists/checklist_detail.html:18
+#: ephios_material_checklists/templates/ephios_material_checklists/fragments/checklist_header.html:29
 msgid "Contents"
 msgstr "Inhalt"
 
-#: ephios_material_checklists/templates/ephios_material_checklists/checklist_detail.html:15
+#: ephios_material_checklists/templates/ephios_material_checklists/checklist_detail.html:19
 msgid "Items"
 msgstr "Gegenstände"
 
-#: ephios_material_checklists/templates/ephios_material_checklists/checklist_detail.html:16
+#: ephios_material_checklists/templates/ephios_material_checklists/checklist_detail.html:20
 msgid "Types"
 msgstr "verschiedene Typen"
 
-#: ephios_material_checklists/templates/ephios_material_checklists/checklist_detail.html:17
+#: ephios_material_checklists/templates/ephios_material_checklists/checklist_detail.html:21
 msgid "Used for"
 msgstr "Genutzt für"
 
-#: ephios_material_checklists/templates/ephios_material_checklists/checklist_detail.html:18
+#: ephios_material_checklists/templates/ephios_material_checklists/checklist_detail.html:22
 msgid "Resources"
 msgstr "Ressourcen"
 
-#: ephios_material_checklists/templates/ephios_material_checklists/checklist_detail.html:24
+#: ephios_material_checklists/templates/ephios_material_checklists/checklist_detail.html:33
 msgid "Document"
 msgstr "Dokument"
 
-#: ephios_material_checklists/templates/ephios_material_checklists/checklist_detail.html:28
+#: ephios_material_checklists/templates/ephios_material_checklists/checklist_detail.html:40
 msgid "Download as PDF Document"
 msgstr "PDF Herunterladen"
 
-#: ephios_material_checklists/templates/ephios_material_checklists/checklist_detail.html:30
+#: ephios_material_checklists/templates/ephios_material_checklists/checklist_detail.html:42
 msgid "PDF-File"
 msgstr "PDF-Datei"
+
+#: ephios_material_checklists/templates/ephios_material_checklists/checklist_form.html:9
+msgid "Edit checklist"
+msgstr "Checkliste bearbeiten"
+
+#: ephios_material_checklists/templates/ephios_material_checklists/checklist_form.html:11
+msgid "Create checklist"
+msgstr "Checkliste erstellen"
+
+#: ephios_material_checklists/templates/ephios_material_checklists/checklist_form.html:24
+#: ephios_material_checklists/templates/ephios_material_checklists/itemtype_set_form.html:104
+#: ephios_material_checklists/templates/ephios_material_checklists/itemtypecategory_form.html:29
+msgid "Save"
+msgstr "Speichern"
+
+#: ephios_material_checklists/templates/ephios_material_checklists/checklist_form.html:27
+#: ephios_material_checklists/templates/ephios_material_checklists/itemtype_set_form.html:107
+#: ephios_material_checklists/templates/ephios_material_checklists/itemtypecategory_form.html:32
+msgid "Reset changes"
+msgstr "Änderungen zurücksetzen"
+
+#: ephios_material_checklists/templates/ephios_material_checklists/checklist_form.html:31
+#: ephios_material_checklists/templates/ephios_material_checklists/itemtype_set_form.html:111
+#: ephios_material_checklists/templates/ephios_material_checklists/itemtypecategory_form.html:36
+msgid "Aboard editing"
+msgstr "Bearbeitung abbrechen"
+
+#: ephios_material_checklists/templates/ephios_material_checklists/checklist_form.html:35
+#: ephios_material_checklists/templates/ephios_material_checklists/itemtypecategory_form.html:40
+msgid "Create"
+msgstr "Erstellen"
+
+#: ephios_material_checklists/templates/ephios_material_checklists/checklist_form.html:38
+#: ephios_material_checklists/templates/ephios_material_checklists/itemtypecategory_form.html:43
+msgid "Clear form"
+msgstr "Formular zurücksetzen"
+
+#: ephios_material_checklists/templates/ephios_material_checklists/checklist_form.html:42
+#: ephios_material_checklists/templates/ephios_material_checklists/itemtypecategory_form.html:47
+msgid "Aboard creation"
+msgstr "Erstellung abbrechen"
 
 #: ephios_material_checklists/templates/ephios_material_checklists/checklist_list.html:9
 msgid "Add checklist"
@@ -212,8 +284,8 @@ msgstr "Checkliste hinzufügen"
 
 #: ephios_material_checklists/templates/ephios_material_checklists/checklist_list.html:12
 #: ephios_material_checklists/templates/ephios_material_checklists/itemtype_set_form.html:10
-#: ephios_material_checklists/templates/ephios_material_checklists/itemtypecategory_list.html:8
-msgid "Edit material types"
+#: ephios_material_checklists/templates/ephios_material_checklists/itemtypecategory_list.html:7
+msgid "Edit item types"
 msgstr "Materialtypen bearbeiten"
 
 #: ephios_material_checklists/templates/ephios_material_checklists/checklist_list.html:37
@@ -229,9 +301,21 @@ msgid "No results"
 msgstr "Keine Ergebnisse"
 
 #: ephios_material_checklists/templates/ephios_material_checklists/fragments/checklist_header.html:8
-#: ephios_material_checklists/templates/ephios_material_checklists/itemtypecategory_list.html:11
+#: ephios_material_checklists/templates/ephios_material_checklists/itemtypecategory_list.html:10
 msgid "Back to Checklist Overview"
 msgstr "Zurück zur Checklisten-Übersicht"
+
+#: ephios_material_checklists/templates/ephios_material_checklists/fragments/checklist_header.html:17
+msgid "Overview"
+msgstr "Übersicht"
+
+#: ephios_material_checklists/templates/ephios_material_checklists/fragments/checklist_header.html:23
+msgid "Stucture"
+msgstr "Struktur"
+
+#: ephios_material_checklists/templates/ephios_material_checklists/fragments/checklist_header.html:35
+msgid "Edit"
+msgstr "Bearbeiten"
 
 #: ephios_material_checklists/templates/ephios_material_checklists/fragments/checklist_tags.html:4
 msgid "Deprecated"
@@ -241,58 +325,113 @@ msgstr "Ausgesondert"
 msgid "Only Sub-Checklist"
 msgstr "Unter-Checkliste"
 
+#: ephios_material_checklists/templates/ephios_material_checklists/fragments/itemtype_list_columns.html:26
+msgid "No content yet."
+msgstr "Noch kein Inhalt."
+
 #: ephios_material_checklists/templates/ephios_material_checklists/itemtype_set_form.html:53
 msgid "cannot delete, appears in checklist"
 msgstr "kann nicht gelöscht werden, wird in Checkliste genutzt"
 
 #: ephios_material_checklists/templates/ephios_material_checklists/itemtype_set_form.html:66
-msgid "Add material type"
+msgid "Add item type"
 msgstr "Neuen Materialtyp hinzufügen"
 
-#: ephios_material_checklists/templates/ephios_material_checklists/itemtype_set_form.html:104
-#: ephios_material_checklists/templates/ephios_material_checklists/itemtypecategory_form.html:23
-msgid "Save"
-msgstr "Speichern"
+#: ephios_material_checklists/templates/ephios_material_checklists/itemtypecategory_confirm_delete.html:20
+#, python-format
+msgid ""
+"Are you sure you want to delete the item type category %(itemtypecategory)s?"
+msgstr ""
+"Sind Sie sicher, dass Sie die Materialkategorie %(itemtypecategory)s löschen "
+"möchten?"
 
-#: ephios_material_checklists/templates/ephios_material_checklists/itemtype_set_form.html:107
-#: ephios_material_checklists/templates/ephios_material_checklists/itemtypecategory_form.html:26
-msgid "Reset changes"
-msgstr "Änderungen zurücksetzen"
+#: ephios_material_checklists/templates/ephios_material_checklists/itemtypecategory_confirm_delete.html:27
+msgid "The following item types from this category will be deleted as well:"
+msgstr ""
+"Die folgenden Materialtypen von dieser Kategorie werden ebenfalls gelöscht:"
 
-#: ephios_material_checklists/templates/ephios_material_checklists/itemtype_set_form.html:111
-#: ephios_material_checklists/templates/ephios_material_checklists/itemtypecategory_form.html:30
-msgid "Aboard editing"
-msgstr "Bearbeitung abbrechen"
+#: ephios_material_checklists/templates/ephios_material_checklists/itemtypecategory_confirm_delete.html:33
+msgid ""
+"Caution: All checklist entries containing these item types will also be "
+"deleted."
+msgstr ""
+"Achtung: Alle Checklisten-Einträge, die diese Materialtypen beinhalten, "
+"werden mit gelöscht."
+
+#: ephios_material_checklists/templates/ephios_material_checklists/itemtypecategory_confirm_delete.html:37
+msgid "There are no item types in this category yet."
+msgstr "Es gibt noch keine Materialtypen in dieser Kategorie."
 
 #: ephios_material_checklists/templates/ephios_material_checklists/itemtypecategory_form.html:9
-msgid "Edit material type category"
+msgid "Edit item type category"
 msgstr "Materialkategorie bearbeiten"
 
 #: ephios_material_checklists/templates/ephios_material_checklists/itemtypecategory_form.html:11
-#: ephios_material_checklists/templates/ephios_material_checklists/itemtypecategory_list.html:71
-msgid "Create material type category"
+#: ephios_material_checklists/templates/ephios_material_checklists/itemtypecategory_list.html:48
+msgid "Create item type category"
 msgstr "Materialkategorie erstellen"
 
-#: ephios_material_checklists/templates/ephios_material_checklists/itemtypecategory_form.html:34
-msgid "Create"
-msgstr "Erstellen"
-
-#: ephios_material_checklists/templates/ephios_material_checklists/itemtypecategory_form.html:37
-msgid "Clear form"
-msgstr "Formular zurücksetzen"
-
-#: ephios_material_checklists/templates/ephios_material_checklists/itemtypecategory_form.html:41
-msgid "Aboard creation"
-msgstr "Erstellung abbrechen"
-
-#: ephios_material_checklists/templates/ephios_material_checklists/itemtypecategory_list.html:33
-msgid "Edit Category"
-msgstr "Kategorie Bearbeiten"
-
-#: ephios_material_checklists/templates/ephios_material_checklists/itemtypecategory_list.html:35
+#: ephios_material_checklists/templates/ephios_material_checklists/itemtypecategory_list.html:32
 msgid "Edit Category Contents"
 msgstr "Materialtypen bearbeiten"
 
-#: ephios_material_checklists/templates/ephios_material_checklists/itemtypecategory_list.html:62
-msgid "No content yet."
-msgstr "Noch kein Inhalt."
+#: ephios_material_checklists/templates/ephios_material_checklists/itemtypecategory_list.html:34
+msgid "Edit Category"
+msgstr "Kategorie Bearbeiten"
+
+#: ephios_material_checklists/templates/ephios_material_checklists/itemtypecategory_list.html:36
+msgid "Delete Category"
+msgstr "Kategorie Löschen"
+
+#: ephios_material_checklists/views/checklist.py:17
+#, python-format
+msgid ""
+"Checklist %(name)s was created successfully. You can now specify it's "
+"contents."
+msgstr ""
+"Die Checkliste %(name)s wurde erfolgreich angelegt. Sie können nun den "
+"Inhalt spezifizieren."
+
+#: ephios_material_checklists/views/checklist.py:32
+#, python-format
+msgid "Checklist %(name)s was updated successfully."
+msgstr "Die Checkliste %(name)s wurde erfolgreich aktualisiert."
+
+#: ephios_material_checklists/views/checklist.py:43
+#, python-format
+msgid "Referenced PDF for %(name)s was set successfully."
+msgstr "Die PDF-Datei zur Checkliste %(name)s wurde erfolgreich hinterlegt."
+
+#: ephios_material_checklists/views/checklist.py:45
+#, python-format
+msgid "Referenced PDF for %(name)s was removed successfully."
+msgstr "Die PDF-Datei zur Checkliste %(name)s wurde erfolgreich entfernt."
+
+#: ephios_material_checklists/views/checklist.py:51
+#, python-format
+msgid "Checklist %(name)s was deleted successfully."
+msgstr "Die Checkliste %(name)s wurde erfolgreich gelöscht."
+
+#: ephios_material_checklists/views/itemtype.py:25
+#, python-format
+msgid ""
+"Category %(name)s was created successfully. You can now specify the item "
+"types."
+msgstr ""
+"Die Kategorie %(name)s wurde erfolgreich angelegt. Sie können nun die "
+"Materialtyen anlegen."
+
+#: ephios_material_checklists/views/itemtype.py:34
+#, python-format
+msgid "Item type category %(name)s was update successfully."
+msgstr "Die Materialkategorie %(name)s wurde erfolgreich angelegt."
+
+#: ephios_material_checklists/views/itemtype.py:39
+msgid "Category %(name)s and it's item types were deleted successfully."
+msgstr ""
+"Die Kategorie %(name)s und die zugehörigen Materialtyen wurden erfolgreich "
+"gelöscht."
+
+#: ephios_material_checklists/views/itemtype.py:47
+msgid "Item types were updated successfully."
+msgstr "Materialtypen wurden erfolgreich aktualisiert."
