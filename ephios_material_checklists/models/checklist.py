@@ -161,7 +161,7 @@ class Checklist(models.Model):
                 new_sub_compartment.copy_content_from(other_sub_compartment)
 
     def get_absolute_url(self):
-        return reverse("material:checklist_detail", kwargs={"pk": self.pk})
+        return reverse("ephios_material_checklists:checklist_detail", kwargs={"pk": self.pk})
 
     def __str__(self):
         return self.name
