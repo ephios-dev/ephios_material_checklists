@@ -1,0 +1,40 @@
+{% extends "ephios_material_checklists/base.html" %}
+{% load crispy_forms_filters %}
+{% load i18n %}
+
+
+{% block checklists_header_content %}
+    <h2>
+        {% translate "Delete material type category" %}
+    </h2>
+{% endblock %}
+
+
+{% block checklists_content %}
+    <form method="post">
+        {% csrf_token %}
+        {{ form|crispy }}
+
+        <div class="alert alert-danger pb-1 mb-4 mt-4">
+            <h4 class="text-danger bold mb-4">
+                {% blocktranslate trimmed %}
+                    Are you sure you want to delete the checklist {{ checklist }}?
+                {% endblocktranslate %}
+            </h4>
+        
+            <p class="text-danger">
+                {% translate "Caution: All material checks based on the checklist will be deleted as well." %}
+            </p>
+            <p class="text-danger">
+                {% translate "Did you consider marking the checklist as deprecated instead?" %}
+            </p>
+        </div>
+    
+         <a class="btn btn-secondary" href="{% url 'ephios_material_checklists:itemtype_category_list' %}" role="button">
+            <span class="fa fa-times" aria-hidden="true"></span>
+            {% translate "Aboard delete" %}
+        </a>
+        <input type="submit" class="btn btn-danger ml-1" value="{% translate "Delete" %}">
+
+    </form>
+{% endblock %}

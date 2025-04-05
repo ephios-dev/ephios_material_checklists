@@ -5,7 +5,7 @@
 
 {% block checklists_header_content %}
     <h2>
-        {% if itemtypecategory %}
+        {% if checklist %}
             {% translate "Edit checklist" %}
         {% else %}
             {% translate "Create checklist" %}
@@ -21,7 +21,7 @@
 
         {% if checklist %}
             <input type="submit" class="btn btn-primary" value="{% translate "Save" %}">
-            <a class="btn btn-outline-primary ml-1" href="{% url 'ephios_material_checklists:checklist_edit' itemtypecategory.pk %}" role="button">
+            <a class="btn btn-outline-primary ml-1" href="{% url 'ephios_material_checklists:checklist_edit_start' checklist.pk %}" role="button">
                 <span class="fa fa-undo" aria-hidden="true"></span>
                 {% translate "Reset changes" %}
             </a>
